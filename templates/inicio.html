@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="es-PE">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inicio | Servicios Generales</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        html { scroll-behavior: smooth; }
+        .diapositiva { transition: opacity 1s ease-in-out; opacity:0; z-index:0; }
+        .diapositiva.activa { opacity:1; z-index:1; }
+        .servicio-card { transition: all 0.3s ease; }
+        .servicio-card:hover { transform: translateY(-8px); }
+        .whatsapp-flotante { position: fixed; bottom: 25px; right: 25px; z-index: 999; }
+    </style>
+</head>
+<body class="font-sans text-gray-800 bg-gray-50">
+
+    <!-- Navegación -->
+    <nav class="bg-slate-900/90 text-white py-4 px-6 flex justify-end items-center fixed w-full top-0 z-30">
+   
+        <div class="flex gap-8 text-sm font-medium">
+            <a href="#inicio" class="hover:text-blue-400 transition">Inicio</a>
+            <a href="#servicios" class="hover:text-blue-400 transition">Servicios</a>
+            <a href="#nosotros" class="hover:text-blue-400 transition">Nosotros</a>
+            <a href="#contacto" class="hover:text-blue-400 transition">Contacto</a>
+        </div>
+    </nav>
+
+    <!-- Inicio / Carrusel cada 2 segundos -->
+    <section id="inicio" class="relative h-[85vh] flex items-star text-white overflow-hidden">
+        <div class="carrusel absolute inset-0">
+            {% for p in portadas %}
+            <div class="diapositiva absolute inset-0 bg-cover bg-center {% if forloop.first %}activa{% endif %}"
+                 style="background-image:url('{{ p.imagen.url }}');"></div>
+            {% empty %}
+            <div class="diapositiva absolute inset-0 bg-cover bg-center activa"
+                 style="background-image:url('/media/portadas/defecto.jpg');"></div>
+            {% endfor %}
+        </div>
+        <div class="absolute inset-0 bg-slate-900/85"></div>
+
+        <div class="w-full px-4 md:px-8 relative z-10 pt-20 md:pt-24">
+            <p class="text-blue-400 font-semibold uppercase tracking-widest mb-4 text-x1">SERVICIOS GENERALES</p>
+            <h1 class="text-[clamp(3.5rem,8vw,6rem)] font-bold leading-[1.05] mb-6">
+                Soluciones integrales<br>para <span class="text-blue-400">cada espacio</span>
+            </h1>
+            <p class="text-lg md:text-xl text-gray-200 max-w-xl mb-12">
+                Brindamos instalaciones, mantenimiento y acabados con calidad, seguridad y compromiso.
+            </p>
+<!-- Iconos que llevan a cada servicio -->
+<div class="grid grid-cols-3 md:grid-cols-6 gap-4 md:gap-6 max-w-5xl mx-auto">
+    <a href="/servicio/7/" class="bg-white/10 rounded-lg p-4 text-center hover:bg-white/20">
+        <svg class="w-10 h-10 mx-auto mb-2 text-blue-400" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"></path>
+        </svg>
+        <p class="text-white font-medium">Instalaciones Eléctricas</p>
+    </a>
+    <a href="/servicio/2/" class="bg-white/10 rounded-lg p-4 text-center hover:bg-white/20">
+        <svg class="w-10 h-10 mx-auto mb-2 text-blue-400" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M12 2v20M8 7h8M8 12h8M8 17h8"></path>
+        </svg>
+        <p class="text-white font-medium">Instalaciones Sanitarias</p>
+    </a>
+    <a href="/servicio/3/" class="bg-white/10 rounded-lg p-4 text-center hover:bg-white/20">
+        <svg class="w-10 h-10 mx-auto mb-2 text-blue-400" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="12" cy="12" r="5"></circle>
+            <path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"></path>
+        </svg>
+        <p class="text-white font-medium">Aire Acondicionado</p>
+    </a>
+    <a href="/servicio/4/" class="bg-white/10 rounded-lg p-4 text-center hover:bg-white/20">
+        <svg class="w-10 h-10 mx-auto mb-2 text-blue-400" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+        </svg>
+        <p class="text-white font-medium">Cámaras de Seguridad</p>
+    </a>
+    <a href="/servicio/6/" class="bg-white/10 rounded-lg p-4 text-center hover:bg-white/20">
+        <svg class="w-10 h-10 mx-auto mb-2 text-blue-400" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z"></path>
+        </svg>
+        <p class="text-white font-medium">Pintura</p>
+    </a>
+    <a href="/servicio/5/" class="bg-white/10 rounded-lg p-4 text-center hover:bg-white/20">
+        <svg class="w-10 h-10 mx-auto mb-2 text-blue-400" fill="none" stroke="currentColor" stroke-width="2">
+            <rect x="3" y="3" width="7" height="7"></rect>
+            <rect x="14" y="3" width="7" height="7"></rect>
+            <rect x="14" y="14" width="7" height="7"></rect>
+            <rect x="3" y="14" width="7" height="7"></rect>
+        </svg>
+        <p class="text-white font-medium">Enchape</p>
+    </a>
+</div>
+        <script>
+            const fotos = document.querySelectorAll('.diapositiva');
+            let i = 0;
+            setInterval(() => {
+                fotos[i].classList.remove('activa');
+                i = (i+1) % fotos.length;
+                fotos[i].classList.add('activa');
+            }, 2000);
+        </script>
+    </section>
+
+    <!-- Servicios completos con efecto al pasar ratón -->
+    <section id="servicios" class="max-w-7xl mx-auto py-20 px-6">
+        <h2 class="text-3xl font-bold text-center mb-12">Nuestros Servicios</h2>
+        <div class="grid md:grid-cols-3 gap-8">
+            {% for s in servicios %}
+            <a href="{% url 'detalle_servicio' s.pk %}" class="servicio-card group block rounded-lg shadow-md overflow-hidden">
+                {% if s.imagen %}
+                <img src="{{ s.imagen.url }}" alt="{{ s.nombre }}" class="w-full h-64 object-cover transition-transform duration-300 group-hover:scale-105">
+                {% else %}
+                <div class="w-full h-64 bg-gray-200 flex items-center justify-center text-gray-500">Sin imagen</div>
+                {% endif %}
+                <div class="p-4 bg-white">
+                    <h3 class="font-semibold text-xl mb-2">{{ s.nombre }}</h3>
+                    <span class="text-blue-600 font-medium">Ver detalles →</span>
+                </div>
+            </a>
+            {% empty %}
+            <p class="col-span-3 text-center text-gray-500">No hay servicios activos.</p>
+            {% endfor %}
+        </div>
+    </section>
+
+    <!-- Nosotros: foto + texto -->
+    <section id="nosotros" class="max-w-5xl mx-auto py-20 px-6 bg-gray-100">
+        {% if info %}
+        <h2 class="text-3xl font-bold mb-10 text-center">{{ info.titulo_principal }}</h2>
+        <div class="grid md:grid-cols-2 gap-10 items-center">
+            {% if info.imagen_equipo %}
+            <div class="rounded-2xl overflow-hidden shadow-lg">
+                <img src="{{ info.imagen_equipo.url }}" alt="Equipo" class="w-full h-auto">
+            </div>
+            {% endif %}
+            <div>
+                <div class="text-gray-600 mb-4 leading-relaxed">{{ info.descripcion_1|linebreaks }}</div>
+                {% if info.descripcion_2 %}<div class="text-gray-600 mb-4 leading-relaxed">{{ info.descripcion_2|linebreaks }}</div>{% endif %}
+                {% if info.pie_lista %}
+                <ul class="space-y-2 text-gray-700">{% for linea in info.pie_lista.splitlines %}<li>✓ {{ linea }}</li>{% endfor %}</ul>
+                {% endif %}
+            </div>
+        </div>
+        {% else %}
+        <div class="text-center">
+            <h2 class="text-3xl font-bold mb-10">Sobre Nosotros</h2>
+            <div class="grid md:grid-cols-2 gap-10 items-center">
+                <div class="rounded-2xl overflow-hidden shadow-lg"><img src="/media/nosotros/equipo.jpg" alt="Equipo" class="w-full h-auto"></div>
+                <div class="text-left text-gray-600">
+                    <p class="mb-4">Equipo especializado con experiencia en electricidad, sanitarias, seguridad y acabados.</p>
+                    <p class="mb-4">Trabajo seguro, ordenado y dentro de plazo.</p>
+                </div>
+            </div>
+        </div>
+        {% endif %}
+    </section>
+
+    <!-- Contacto: WhatsApp + formulario que envía a tu correo -->
+    <section id="contacto" class="max-w-5xl mx-auto py-20 px-6">
+        <h2 class="text-3xl font-bold mb-12 text-center">Contacto</h2>
+        <div class="grid md:grid-cols-2 gap-12">
+            <div class="flex flex-col items-center justify-center">
+                <a href="https://wa.me/51930272839" target="_blank" class="text-green-500 hover:text-green-600 transition">
+                    <svg class="w-20 h-20 mb-4" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.115 1.03 6.926 2.821a9.825 9.825 0 012.816 6.943c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.555 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+                </a>
+                <p class="text-center text-lg font-medium">Escribe por WhatsApp<br>930‑272‑839</p>
+            </div>
+            <form action="mailto:cajadenas@gmail.com" method="post" enctype="text/plain" class="space-y-4 w-full max-w-md">
+                <div>
+                    <label class="block text-gray-700 mb-1">Tu correo</label>
+                    <input type="email" name="correo" class="w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500" required>
+                </div>
+                <div>
+                    <label class="block text-gray-700 mb-1">Tu mensaje</label>
+                    <textarea name="mensaje" rows="5" class="w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500" required></textarea>
+                </div>
+                <button type="submit" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-6 rounded transition">Enviar mensaje</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- WhatsApp flotante siempre visible -->
+    <a href="https://wa.me/51930272839" target="_blank" class="whatsapp-flotante bg-green-500 hover:bg-green-600 text-white p-3 rounded-full shadow-lg">
+        <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.115 1.03 6.926 2.821a9.825 9.825 0 012.816 6.943c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.555 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+    </a>
+
+</body>
+</html>

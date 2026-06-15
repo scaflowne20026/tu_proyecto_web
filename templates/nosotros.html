@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="es-PE">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nosotros | Servicios Generales</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="font-sans text-gray-800 bg-gray-50">
+
+    <nav class="bg-slate-900 text-white py-4 px-6 flex justify-between items-center sticky top-0 z-20">
+        <h1 class="text-xl font-bold">Servicios Generales</h1>
+        <div class="flex gap-6 text-sm">
+            <a href="/" class="hover:text-blue-400">Inicio</a>
+            <a href="/#servicios" class="hover:text-blue-400">Servicios</a>
+            <a href="/nosotros/" class="hover:text-blue-400">Nosotros</a>
+            <a href="#contacto" class="hover:text-blue-400">Contacto</a>
+        </div>
+        <a href="https://wa.me/51930272839" target="_blank" class="bg-green-500 px-4 py-2 rounded text-sm hover:bg-green-600">WhatsApp</a>
+    </nav>
+
+    <main class="max-w-5xl mx-auto py-12 px-6">
+        {% if info %}
+        <h1 class="text-4xl font-bold mb-2 text-center">{{ info.titulo_principal }}</h1>
+        {% if info.subtitulo %}<p class="text-center text-gray-600 mb-10">{{ info.subtitulo }}</p>{% endif %}
+        <div class="grid md:grid-cols-2 gap-10 items-center mb-12">
+            <div>
+                <div class="text-gray-600 mb-4 leading-relaxed">{{ info.descripcion_1|linebreaks }}</div>
+                {% if info.descripcion_2 %}<div class="text-gray-600 mb-4 leading-relaxed">{{ info.descripcion_2|linebreaks }}</div>{% endif %}
+                {% if info.pie_lista %}
+                <ul class="space-y-2 text-gray-700">
+                    {% for linea in info.pie_lista.splitlines %}<li>✓ {{ linea }}</li>{% endfor %}
+                </ul>
+                {% endif %}
+            </div>
+            {% if info.imagen_equipo %}
+            <div class="rounded-2xl overflow-hidden shadow-lg">
+                <img src="{{ info.imagen_equipo.url }}" alt="Equipo" class="w-full h-auto">
+            </div>
+            {% endif %}
+        </div>
+        {% else %}
+        <div class="text-center">
+            <h1 class="text-4xl font-bold mb-2">SERVICIOS GENERALES</h1>
+            <p class="text-gray-600 mb-10">Soluciones integrales para cada espacio</p>
+            <div class="max-w-2xl mx-auto text-left text-gray-600">
+                <p class="mb-4">Brindamos servicios de instalaciones, mantenimiento y acabados con calidad, seguridad y compromiso. Atendemos viviendas, oficinas y locales comerciales en toda Lima, con personal capacitado y materiales de primera calidad.</p>
+                <p class="mb-4">Nuestra prioridad es entregar trabajos limpios, seguros y dentro del plazo acordado. Ofrecemos presupuesto sin compromiso y garantía por escrito en cada proyecto.</p>
+                <ul class="space-y-2 text-gray-700">
+                    <li>✓ Electricidad y tableros</li>
+                    <li>✓ Instalaciones sanitarias</li>
+                    <li>✓ Aire acondicionado</li>
+                    <li>✓ Cámaras y seguridad</li>
+                    <li>✓ Porcelanato y cerámicos</li>
+                    <li>✓ Pintura y acabados generales</li>
+                </ul>
+            </div>
+        </div>
+        {% endif %}
+    </main>
+
+    <section id="contacto" class="bg-slate-900 text-white py-12 px-6">
+        <div class="max-w-4xl mx-auto text-center">
+            <h2 class="text-2xl font-bold mb-4">Contacto</h2>
+            <p class="text-slate-300 mb-6">
+                Lima, Perú | Teléfono: 930‑272‑839 &nbsp; | &nbsp; 
+                <a href="mailto:cajadenas@gmail.com" class="hover:underline">Correo: cajadenas@gmail.com</a>
+            </p>
+            <a href="https://wa.me/51930272839" target="_blank" class="inline-flex items-center gap-2 bg-green-500 hover:bg-green-600 px-6 py-3 rounded-full font-semibold">Escribir por WhatsApp</a>
+        </div>
+    </section>
+
+</body>
+</html>

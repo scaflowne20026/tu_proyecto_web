@@ -3,11 +3,30 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <title>Instalaciones Sanitarias</title>
+    <title>{{ servicio.nombre }} | Servicios Generales</title>
+    <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body>
-    <h1>Instalaciones Sanitarias</h1>
-    <img src="{% static 'imagenes/sanitarias.jpg' %}" alt="Instalaciones Sanitarias">
-    <p>Descripción del servicio...</p>
+<body class="max-w-5xl mx-auto p-6">
+    <h1 class="text-3xl font-bold mb-4">{{ servicio.nombre }}</h1>
+
+    <!-- Usa la ruta estática según nombre del servicio -->
+    {% if servicio.nombre == "Instalaciones Eléctricas" %}
+        <img src="{% static 'imagenes/electricidad.jpg' %}" alt="{{ servicio.nombre }}" class="w-full max-w-2xl mx-auto mb-6 rounded shadow">
+    {% elif servicio.nombre == "Instalaciones Sanitarias" %}
+        <img src="{% static 'imagenes/sanitarias.jpg' %}" alt="{{ servicio.nombre }}" class="w-full max-w-2xl mx-auto mb-6 rounded shadow">
+    {% elif servicio.nombre == "Aire Acondicionado" %}
+        <img src="{% static 'imagenes/aire.jpg' %}" alt="{{ servicio.nombre }}" class="w-full max-w-2xl mx-auto mb-6 rounded shadow">
+    {% elif servicio.nombre == "Cámaras de Seguridad" %}
+        <img src="{% static 'imagenes/camaras.png' %}" alt="{{ servicio.nombre }}" class="w-full max-w-2xl mx-auto mb-6 rounded shadow">
+    {% elif servicio.nombre == "Pintura" %}
+        <img src="{% static 'imagenes/pintura.jpg' %}" alt="{{ servicio.nombre }}" class="w-full max-w-2xl mx-auto mb-6 rounded shadow">
+    {% elif servicio.nombre == "Enchape" %}
+        <img src="{% static 'imagenes/porcelanato.jpg' %}" alt="{{ servicio.nombre }}" class="w-full max-w-2xl mx-auto mb-6 rounded shadow">
+    {% else %}
+        <p class="text-red-500">Sin imagen disponible</p>
+    {% endif %}
+
+    <p class="text-lg">{{ servicio.descripcion }}</p>
+    <a href="/" class="inline-block mt-8 text-blue-500">← Volver al inicio</a>
 </body>
 </html>

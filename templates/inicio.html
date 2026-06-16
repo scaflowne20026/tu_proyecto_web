@@ -131,12 +131,14 @@
         <div class="text-center">
             <h2 class="text-3xl font-bold mb-10">Sobre Nosotros</h2>
             <div class="grid md:grid-cols-2 gap-10 items-center">
-                <div class="rounded-2xl overflow-hidden shadow-lg"><img src="/media/nosotros/equipo.jpg" alt="Equipo" class="w-full h-auto"></div>
-                <div class="text-left text-gray-600">
-                    <p class="mb-4">Equipo especializado con experiencia en electricidad, sanitarias, seguridad y acabados.</p>
-                    <p class="mb-4">Trabajo seguro, ordenado y dentro de plazo.</p>
-                </div>
-            </div>
+    <div class="rounded-2xl overflow-hidden shadow-lg">
+        <img src="{% static 'imagenes/portada1.jpg' %}" alt="Sobre nosotros" class="w-full">
+    </div>
+    <div class="text-left text-gray-600">
+        <p class="mb-4">Equipo especializado con experiencia en electricidad, sanitarias, seguridad y acabados.</p>
+        <p class="mb-4">Trabajo seguro, ordenado y dentro de plazo.</p>
+    </div>
+</div>
         </div>
         {% endif %}
     </section>

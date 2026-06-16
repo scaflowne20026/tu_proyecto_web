@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="es-PE">
 <head>
@@ -30,14 +31,12 @@
     <!-- Inicio / Carrusel cada 2 segundos -->
     <section id="inicio" class="relative h-[85vh] flex items-star text-white overflow-hidden">
         <div class="carrusel absolute inset-0">
-            {% for p in portadas %}
-            <div class="diapositiva absolute inset-0 bg-cover bg-center {% if forloop.first %}activa{% endif %}"
-                 style="background-image:url('{{ p.imagen.url }}');"></div>
-            {% empty %}
-            <div class="diapositiva absolute inset-0 bg-cover bg-center activa"
-                 style="background-image:url('/media/portadas/defecto.jpg');"></div>
-            {% endfor %}
-        </div>
+<div class="diapositiva absolute inset-0 bg-cover bg-center activa"
+     style="background-image:url('{% static 'imagenes/portada1.jpg' %}')"></div>
+<div class="diapositiva absolute inset-0 bg-cover bg-center"
+     style="background-image:url('{% static 'imagenes/portada2.jpg' %}')"></div>
+<div class="diapositiva absolute inset-0 bg-cover bg-center"
+     style="background-image:url('{% static 'imagenes/portada3.jpg' %}')"></div>        </div>
         <div class="absolute inset-0 bg-slate-900/85"></div>
 
         <div class="w-full px-4 md:px-8 relative z-10 pt-20 md:pt-24">
@@ -51,43 +50,29 @@
 <!-- Iconos que llevan a cada servicio -->
 <div class="grid grid-cols-3 md:grid-cols-6 gap-4 md:gap-6 max-w-5xl mx-auto">
     <a href="/servicio/7/" class="bg-white/10 rounded-lg p-4 text-center hover:bg-white/20">
-        <svg class="w-10 h-10 mx-auto mb-2 text-blue-400" fill="none" stroke="currentColor" stroke-width="2">
-            <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"></path>
-        </svg>
+            
+        <img src="{% static 'imagenes/electricas.jpg' %}" alt="Eléctricas" class="w-10 h-10 mx-auto mb-2 object-cover rounded">
         <p class="text-white font-medium">Instalaciones Eléctricas</p>
     </a>
     <a href="/servicio/2/" class="bg-white/10 rounded-lg p-4 text-center hover:bg-white/20">
-        <svg class="w-10 h-10 mx-auto mb-2 text-blue-400" fill="none" stroke="currentColor" stroke-width="2">
-            <path d="M12 2v20M8 7h8M8 12h8M8 17h8"></path>
-        </svg>
+        <img src="{% static 'imagenes/sanitarias.jpg' %}" alt="Sanitarias" class="w-10 h-10 mx-auto mb-2 object-cover rounded">
         <p class="text-white font-medium">Instalaciones Sanitarias</p>
     </a>
     <a href="/servicio/3/" class="bg-white/10 rounded-lg p-4 text-center hover:bg-white/20">
-        <svg class="w-10 h-10 mx-auto mb-2 text-blue-400" fill="none" stroke="currentColor" stroke-width="2">
-            <circle cx="12" cy="12" r="5"></circle>
-            <path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"></path>
-        </svg>
+        <img src="{% static 'imagenes/aire.jpg' %}" alt="Aire" class="w-10 h-10 mx-auto mb-2 object-cover rounded">
         <p class="text-white font-medium">Aire Acondicionado</p>
     </a>
     <a href="/servicio/4/" class="bg-white/10 rounded-lg p-4 text-center hover:bg-white/20">
-        <svg class="w-10 h-10 mx-auto mb-2 text-blue-400" fill="none" stroke="currentColor" stroke-width="2">
-            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
-        </svg>
+        <img src="{% static 'imagenes/camaras.jpg' %}" alt="Cámaras" class="w-10 h-10 mx-auto mb-2 object-cover rounded">
         <p class="text-white font-medium">Cámaras de Seguridad</p>
     </a>
     <a href="/servicio/6/" class="bg-white/10 rounded-lg p-4 text-center hover:bg-white/20">
-        <svg class="w-10 h-10 mx-auto mb-2 text-blue-400" fill="none" stroke="currentColor" stroke-width="2">
-            <path d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z"></path>
-        </svg>
+        <img src="{% static 'imagenes/pintura.jpg' %}" alt="Cámaras" class="w-10 h-10 mx-auto mb-2 object-cover rounded">
         <p class="text-white font-medium">Pintura</p>
     </a>
     <a href="/servicio/5/" class="bg-white/10 rounded-lg p-4 text-center hover:bg-white/20">
-        <svg class="w-10 h-10 mx-auto mb-2 text-blue-400" fill="none" stroke="currentColor" stroke-width="2">
-            <rect x="3" y="3" width="7" height="7"></rect>
-            <rect x="14" y="3" width="7" height="7"></rect>
-            <rect x="14" y="14" width="7" height="7"></rect>
-            <rect x="3" y="14" width="7" height="7"></rect>
-        </svg>
+        
+            <img src="{% static 'imagenes/enchape.jpg' %}" alt="Enchape" class="w-10 h-10 mx-auto mb-2 object-cover rounded">
         <p class="text-white font-medium">Enchape</p>
     </a>
 </div>

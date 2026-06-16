@@ -7,22 +7,23 @@
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body class="max-w-6xl mx-auto p-6">
+
     <h1 class="text-3xl font-bold mb-8">{{ servicio.nombre }}</h1>
 
-    <!-- Foto al costado, en dos columnas -->
+    <!-- Foto + Descripción -->
     <div class="grid md:grid-cols-2 gap-8 items-center mb-12">
         {% if servicio.nombre == "Instalaciones Eléctricas" %}
-            <img src="{% static 'imagenes/electricidad.jpg' %}" alt="{{ servicio.nombre }}" class="w-full rounded shadow-lg">
+            <img src="{% static 'imagenes/electricidad.jpg' %}" alt="{{ servicio.nombre }}" class="w-full rounded-lg shadow-lg">
         {% elif servicio.nombre == "Instalaciones Sanitarias" %}
-            <img src="{% static 'imagenes/sanitarias.jpg' %}" alt="{{ servicio.nombre }}" class="w-full rounded shadow-lg">
+            <img src="{% static 'imagenes/sanitarias.jpg' %}" alt="{{ servicio.nombre }}" class="w-full rounded-lg shadow-lg">
         {% elif servicio.nombre == "Aire Acondicionado" %}
-            <img src="{% static 'imagenes/aire.jpg' %}" alt="{{ servicio.nombre }}" class="w-full rounded shadow-lg">
+            <img src="{% static 'imagenes/aire.jpg' %}" alt="{{ servicio.nombre }}" class="w-full rounded-lg shadow-lg">
         {% elif servicio.nombre == "Cámaras de Seguridad" %}
-            <img src="{% static 'imagenes/camaras.jpg' %}" alt="{{ servicio.nombre }}" class="w-full rounded shadow-lg">
+            <img src="{% static 'imagenes/camaras.jpg' %}" alt="{{ servicio.nombre }}" class="w-full rounded-lg shadow-lg">
         {% elif servicio.nombre == "Pintura" %}
-            <img src="{% static 'imagenes/pintura.jpg' %}" alt="{{ servicio.nombre }}" class="w-full rounded shadow-lg">
+            <img src="{% static 'imagenes/pintura.jpg' %}" alt="{{ servicio.nombre }}" class="w-full rounded-lg shadow-lg">
         {% elif servicio.nombre == "Enchape" %}
-            <img src="{% static 'imagenes/porcelanato.jpg' %}" alt="{{ servicio.nombre }}" class="w-full rounded shadow-lg">
+            <img src="{% static 'imagenes/porcelanato.jpg' %}" alt="{{ servicio.nombre }}" class="w-full rounded-lg shadow-lg">
         {% else %}
             <p class="text-gray-500">Sin imagen disponible</p>
         {% endif %}
@@ -30,6 +31,39 @@
         <div>
             <p class="text-lg leading-relaxed">{{ servicio.descripcion }}</p>
         </div>
+    </div>
+
+    <!-- ✅ LO QUE FALTABA: DOS COLUMNAS ABAJO -->
+    <div class="grid md:grid-cols-2 gap-x-10 gap-y-6 mt-16">
+        {% if servicio.titulo_columna_izq %}
+        <div>
+            <h3 class="text-2xl font-bold mb-6 text-center">{{ servicio.titulo_columna_izq }}</h3>
+            {% if servicio.texto_columna_izq %}
+            <ul class="columns-1 md:columns-2 gap-8 space-y-2 pl-0 list-none">
+                {% for linea in servicio.texto_columna_izq.splitlines %}
+                    {% if linea %}
+                    <li class="break-inside-avoid">✓ {{ linea }}</li>
+                    {% endif %}
+                {% endfor %}
+            </ul>
+            {% endif %}
+        </div>
+        {% endif %}
+
+        {% if servicio.titulo_columna_der %}
+        <div>
+            <h3 class="text-2xl font-bold mb-6 text-center">{{ servicio.titulo_columna_der }}</h3>
+            {% if servicio.texto_columna_der %}
+            <ul class="columns-1 md:columns-2 gap-8 space-y-2 pl-0 list-none">
+                {% for linea in servicio.texto_columna_der.splitlines %}
+                    {% if linea %}
+                    <li class="break-inside-avoid">✓ {{ linea }}</li>
+                    {% endif %}
+                {% endfor %}
+            </ul>
+            {% endif %}
+        </div>
+        {% endif %}
     </div>
 
     <a href="/" class="inline-block mt-8 text-blue-500 font-medium">← Volver al inicio</a>
